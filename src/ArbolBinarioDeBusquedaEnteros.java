@@ -1,4 +1,4 @@
-public class ArbolBinarioDeBusquedaEnteros<T> implements ArbolBinarioDeBusqueda {
+public class ArbolBinarioDeBusquedaEnteros<K,V> extends ArbolBinarioDeBusqueda<K,V> {
     //Datos
 
     //Funciones
