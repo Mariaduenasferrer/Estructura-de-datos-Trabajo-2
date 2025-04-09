@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ArbolBinarioDeBusqueda<K extends Comparable<K>,V> {
 
-    private Nodo<K,V> raiz;
+    protected Nodo<K,V> raiz;
 
     /*
     //Listas Generadas
