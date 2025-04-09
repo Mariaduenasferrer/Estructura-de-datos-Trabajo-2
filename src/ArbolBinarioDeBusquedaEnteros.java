@@ -1,4 +1,4 @@
-public class ArbolBinarioDeBusquedaEnteros<K,V> extends ArbolBinarioDeBusqueda<K,V> {
+public class ArbolBinarioDeBusquedaEnteros<K extends Comparable<K>,V> extends ArbolBinarioDeBusqueda<K,V> {
     //Datos
 
     //Funciones
