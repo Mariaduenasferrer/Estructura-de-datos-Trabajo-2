@@ -5,18 +5,51 @@ public class ArbolBinarioDeBusqueda<K extends Comparable<K>,V> {
 
     protected Nodo<K,V> raiz;
 
-    /*
-    //Listas Generadas
-    public getListaPreOrden(){
-        return list;
+    public List<V> getListaPreOrden() {
+        List<V> resultado = new ArrayList<>();
+        preOrden(raiz, resultado);
+        return resultado;
     }
-    public getListaPostOrden(){
-        return list;
+
+    private void preOrden(Nodo<K, V> nodo, List<V> lista) {
+        if (nodo != null) {
+            lista.add(nodo.valor);  // Agregar el valor del nodo
+            preOrden(nodo.menor, lista);  // Recursión en el subárbol izquierdo
+            preOrden(nodo.mayor, lista);  // Recursión en el subárbol derecho
+        }
     }
-    public getListaOrdenCentral(){
-        return list;
+
+    // Lista en postorden: izquierda - derecha - raíz
+    public List<V> getListaPostOrden() {
+        List<V> resultado = new ArrayList<>();
+        postOrden(raiz, resultado);
+        return resultado;
     }
-     */
+
+    private void postOrden(Nodo<K, V> nodo, List<V> lista) {
+        if (nodo != null) {
+            postOrden(nodo.menor, lista);  // Recursión en el subárbol izquierdo
+            postOrden(nodo.mayor, lista);  // Recursión en el subárbol derecho
+            lista.add(nodo.valor);  // Agregar el valor del nodo
+        }
+    }
+
+    // Lista en orden central (inorden): izquierda - raíz - derecha
+    public List<V> getListaOrdenCentral() {
+        List<V> resultado = new ArrayList<>();
+        inOrden(raiz, resultado);
+        return resultado;
+    }
+
+    private void inOrden(Nodo<K, V> nodo, List<V> lista) {
+        if (nodo != null) {
+            inOrden(nodo.menor, lista);  // Recursión en el subárbol izquierdo
+            lista.add(nodo.valor);  // Agregar el valor del nodo
+            inOrden(nodo.mayor, lista);  // Recursión en el subárbol derecho
+        }
+    }
+
+
 
     //Operaciones
     public void addNodoABB(K clave, V valor) {
