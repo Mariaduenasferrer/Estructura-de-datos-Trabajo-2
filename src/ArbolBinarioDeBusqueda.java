@@ -197,7 +197,7 @@ public class ArbolBinarioDeBusqueda<K extends Comparable<K>,V> {
                 isArbolCompleto(nodo.mayor, 2 * index + 2, numeroNodos);
     }
 
-    private int getCantidadNodos(Nodo<K, V> nodo) {
+    public int getCantidadNodos(Nodo<K, V> nodo) {
         if (nodo == null) return 0;
         return 1 + getCantidadNodos(nodo.menor) + getCantidadNodos(nodo.mayor);
     }
