@@ -222,4 +222,32 @@ public class ArbolBinarioDeBusqueda<K extends Comparable<K>,V> {
             getCaminoRecursivo(nodo.mayor, camino);
         }
     }
+
+    public List<K> getCamino(int valor) {
+        List<K> camino = new ArrayList<>();
+        getCaminoRecursivo(raiz, valor, camino);
+        return camino;
+    }
+
+    private boolean getCaminoRecursivo(Nodo<K,V> nodo, int valor, List<K> camino) {
+        if (nodo == null)
+            return false;
+        camino.add(nodo.clave);
+        if (nodo.clave.equals(valor))
+            return true;
+
+        // Asumiendo que la clave es de tipo Integer
+        int claveNodo = (Integer) nodo.clave;
+        if (valor < claveNodo) {
+            if (getCaminoRecursivo(nodo.menor, valor, camino))
+                return true;
+        } else if (valor > claveNodo) {
+            if (getCaminoRecursivo(nodo.mayor, valor, camino))
+                return true;
+        }
+
+        // Si no se encontró el valor en esa rama, se quita el nodo actual y se retrocede
+        camino.removeLast();
+        return false;
+    }
 }
